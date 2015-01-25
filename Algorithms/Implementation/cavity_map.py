@@ -1,11 +1,18 @@
+cavity_map = []
+
 for _ in range(int(input())):
-    _input = list(input())
+    cavity_map.append(input())
+    
+for row, row_map in enumerate(cavity_map):
     output = ''
-    for index, number in enumerate(_input):
+    row_map = list(row_map)
+    for column, number in enumerate(row_map):
         output += number
-        if index > 0 and index < len(_input)-1\
-            and _input[index-1] < _input[index]\
-            and _input[index+1] < _input[index]:
+        if column > 0 and column < len(row_map)-1\
+            and row_map[column-1] < number\
+            and row_map[column+1] < number\
+            and row > 0 and row < len(cavity_map)-1\
+            and list(cavity_map[row-1])[column] < number\
+            and list(cavity_map[row+1])[column] < number:
                 output = output[:-1] + 'X'
-    print(output)
-                
+    print(output)             
